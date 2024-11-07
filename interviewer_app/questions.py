@@ -15,7 +15,7 @@ INTAKE_QUESTIONS = [
         "field": "previous_name",
         "text": "Did you change your name at some point? If so, what was it before?",
     },
-    {"id": 4, "field": "birthday", "text": "What is your birthday?"},
+    {"id": 4, "field": "birthday", "text": "When is your birthday?"},
     {
         "id": 5,
         "field": "birth_place",

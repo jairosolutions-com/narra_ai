@@ -12,8 +12,17 @@ class UserProfile(models.Model):
     grew_up_in = models.CharField(max_length=255, blank=True, null=True)
     insights = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return self.user.username
+    def get_profile_text(self):
+        """Combine all fields into a single text for embedding."""
+        fields = [
+            self.full_name,
+            self.maiden_name,
+            self.previous_name,
+            self.birth_place,
+            self.grew_up_in,
+            self.insights,
+        ]
+        return " ".join([str(field) for field in fields if field])
 
 
 class InterviewSession(models.Model):
