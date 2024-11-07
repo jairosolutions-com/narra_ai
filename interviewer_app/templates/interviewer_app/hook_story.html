@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Share a Favorite Story</title>
+</head>
+<body>
+    <h1>Let's Begin with a Memorable Story</h1>
+    <p>{{ prompt }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="story" rows="5" placeholder="Type your story here..." required></textarea>
+        <button type="submit">Share Story</button>
+    </form>
+</body>
+</html>

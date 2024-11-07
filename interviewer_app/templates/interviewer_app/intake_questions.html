@@ -1,0 +1,131 @@
+<!-- templates/interviewer_app/intake_questions.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intake Questions</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{% static 'js/voice_interaction.js' %}" defer></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fdf8f4;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: auto;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #4a4a4a;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #4a4a4a;
+            margin-bottom: 30px;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .input-container input[type="text"] {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 1px solid #d4af91;
+            border-radius: 8px;
+            color: #4a4a4a;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .input-container input[type="text"]::placeholder {
+            color: #c4b1a3;
+        }
+
+        .voice-button {
+            background-color: #a35b45;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .voice-button:hover {
+            background-color: #8b4d3a;
+        }
+
+        .voice-label {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #4a4a4a;
+        }
+
+        #response {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #4a4a4a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Narra Logo">
+        </div>
+        <h1 class="title">Hi, I’m Narra, your storytelling partner.</h1>
+        <h2 class="subtitle">{{ question.text }}</h2>
+        
+        <div class="input-container">
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" id="answer" name="answer" placeholder="Type your answer here..." required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
+        <button class="voice-button" onclick="startVoiceRecognition('answer')">
+            <i class="fa fa-microphone"></i> <!-- Microphone icon for voice interaction -->
+        </button>
+        <div class="voice-label">Tap to Speak</div>
+
+        <!-- Display the assistant's response here -->
+        <div id="response"></div>
+    </div>
+</body>
+</html>

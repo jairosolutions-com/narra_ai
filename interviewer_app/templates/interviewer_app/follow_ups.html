@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Follow-up Questions</title>
+</head>
+<body>
+    <h1>Thanks for Sharing Your Story!</h1>
+    <p><strong>Your Story:</strong> {{ story }}</p>
+    
+    <h2>Let’s Dive Deeper</h2>
+    <p>Here are some follow-up questions to help you expand on your story:</p>
+    <ul>
+        {% for question in follow_up_questions %}
+            <li>{{ question }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'next_questions' %}">
+        <button type="submit">Continue to Next Section</button>
+    </form>
+</body>
+</html>
